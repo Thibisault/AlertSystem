@@ -103,7 +103,6 @@ public class AlertController {
         return alertService.deleteMedicalRecord(firstName, lastName);
     }
 
-
     //TODO : URL
 
     @PostMapping("/firestation/{stationNumber}")

@@ -2,15 +2,10 @@ package com.SafetyNet.alerts.service;
 
 import com.SafetyNet.alerts.model.*;
 import com.SafetyNet.alerts.repository.*;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -41,34 +36,6 @@ public class AlertService {
      */
     private LocalDate convertToLocalDateViaInstant(Date dateToConvert) {
         return dateToConvert.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-    }
-
-
-    //Todo : Lire et mettre en mémoire la liste d'entrée
-
-
-    public void readJsonFile(String fichierJsonALire) {
-        ObjectMapper mapper = new ObjectMapper();
-        InputStream inputStream = TypeReference.class.getResourceAsStream(fichierJsonALire);
-        try {
-            AlertPersistance alertPersistance = mapper.readValue(inputStream, AlertPersistance.class);
-            this.saveAlertPersistance(alertPersistance);
-            System.out.println("Alert persistance Saved!");
-        } catch (IOException e) {
-            System.out.println("Unable to save  Alert persistance person: " + e.getMessage());
-        }
-    }
-
-    public void writeJsonFile(String cheminDuFichierACreer ,Object object){
-        ObjectMapper mapper = new ObjectMapper();
-        try
-        {
-            mapper.writeValue(new File(cheminDuFichierACreer), object);
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
     }
 
     /**
@@ -112,7 +79,7 @@ public class AlertService {
      */
     public Person addPerson(Person person) throws IOException {
         alertPersistance.getPersons().add(person);
-        writeJsonFile("C:\\Users\\Thibault\\TestParkings\\alerts\\src\\main\\resources/fichierTest.json" ,alertPersistance);
+        JsonFile.writeJsonFile("C:\\Users\\Thibault\\TestParkings\\alerts\\src\\main\\resources/fichierTest.json" ,alertPersistance);
         return person;
     }
     /**
@@ -417,7 +384,6 @@ public class AlertService {
         GregorianCalendar calendar = new GregorianCalendar();
 
         List<AllPersonList> allPersonLists = new ArrayList<>();
-
 
         for (Person person : personList){
             for (Medicalrecord medicalrecord : medicalrecordList){

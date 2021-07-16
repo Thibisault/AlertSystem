@@ -6,7 +6,6 @@ import com.SafetyNet.alerts.model.Medicalrecord;
 import com.SafetyNet.alerts.model.Person;
 import com.SafetyNet.alerts.repository.AlertPersistance;
 import com.SafetyNet.alerts.service.AlertService;
-import com.jayway.jsonpath.internal.function.numeric.Min;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;

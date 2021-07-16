@@ -15,7 +15,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -26,6 +25,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @EntityScan("com.SafetyNet.alerts")
 @EnableJpaRepositories("com.SafetyNet.alerts")
 class AlertServiceTest {
+
+    JsonFile jsonFile = new JsonFile();
 
     AlertService alertServiceTest;
 
@@ -54,6 +55,7 @@ class AlertServiceTest {
 
     @Test
     void readJsonFile() {
+
     }
 
     @Test
@@ -83,7 +85,7 @@ class AlertServiceTest {
 
     @Test
     void saveAlertPersistance() {
-        alertServiceTest.writeJsonFile("C:\\Users\\Thibault\\TestParkings\\alerts\\src\\main\\resources/fichierTest.json", alertServiceTest.listPerson());
+        jsonFile.writeJsonFile("C:\\Users\\Thibault\\TestParkings\\alerts\\src\\main\\resources/fichierTest.json", alertServiceTest.listPerson());
         assertTrue(alertServiceTest.listPerson() != null && alertServiceTest.listPerson().size() == objectNumberGeneration);
 
     }
