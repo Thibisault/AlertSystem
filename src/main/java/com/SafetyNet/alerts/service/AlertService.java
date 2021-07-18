@@ -29,6 +29,11 @@ public class AlertService {
 
     FloodStationPersonPersistance floodStationPersistance = new FloodStationPersonPersistance();
 
+
+    public AlertService() {
+        this.alertPersistance = JsonFile.readJsonFile("fichierInitial.json");
+    }
+
     /**
      * Permet de convertir la date pour determiner l'âge des habitants.
      * @param dateToConvert
@@ -64,7 +69,7 @@ public class AlertService {
      * @param alertPersistance
      * @return La liste de toutes les personnes, la liste de toutes les casernes de pompiers et la liste de tout les dossiers médicaux.
      */
-    public AlertPersistance saveAlertPersistance(AlertPersistance alertPersistance) {
+    public  AlertPersistance saveAlertPersistance(AlertPersistance alertPersistance) {
         this.alertPersistance = alertPersistance;
         return alertPersistance;
     }
@@ -79,7 +84,7 @@ public class AlertService {
      */
     public Person addPerson(Person person) throws IOException {
         alertPersistance.getPersons().add(person);
-        JsonFile.writeJsonFile("C:\\Users\\Thibault\\TestParkings\\alerts\\src\\main\\resources/fichierTest.json" ,alertPersistance);
+        JsonFile.writeJsonFile("fichierTest.json", alertPersistance);
         return person;
     }
     /**
@@ -96,6 +101,7 @@ public class AlertService {
                 oldPerson.setZip(newPerson.getZip());
                 oldPerson.setPhone(newPerson.getPhone());
                 oldPerson.setEmail(newPerson.getEmail());
+                JsonFile.writeJsonFile("fichierTest.json", alertPersistance);
                 return oldPerson;
             }
         }
@@ -112,6 +118,7 @@ public class AlertService {
         for (Person person : personList) {
             if (person.getFirstName().equalsIgnoreCase(firstName) && person.getLastName().equalsIgnoreCase(lastName)) {
                 personList.remove(person);
+                JsonFile.writeJsonFile("fichierTest.json", alertPersistance);
                 return person;
             }
         }
@@ -127,6 +134,7 @@ public class AlertService {
      */
     public Firestation addFirestation(Firestation firestation) {
         alertPersistance.getFirestations().add(firestation);
+        JsonFile.writeJsonFile("fichierTest.json", alertPersistance);
         return firestation;
     }
     /**
@@ -139,6 +147,7 @@ public class AlertService {
         for (Firestation oldFirestation : firestationList) {
             if (oldFirestation.getAddress().equalsIgnoreCase(newFirestation.getAddress())) {
                 oldFirestation.setStation(newFirestation.getStation());
+                JsonFile.writeJsonFile("fichierTest.json", alertPersistance);
                 return oldFirestation;
             }
         }
@@ -154,6 +163,7 @@ public class AlertService {
         for (Firestation firestation : firestationList) {
             if (firestation.getAddress().equalsIgnoreCase(address)) {
                 firestationList.remove(firestation);
+                JsonFile.writeJsonFile("fichierTest.json", alertPersistance);
                 return firestation;
             }
         }
@@ -169,6 +179,7 @@ public class AlertService {
      */
     public Medicalrecord addMedicalRecord(Medicalrecord medicalRecord) {
         alertPersistance.getMedicalrecords().add(medicalRecord);
+        JsonFile.writeJsonFile("fichierTest.json", alertPersistance);
         return medicalRecord;
     }
     /**
@@ -183,6 +194,7 @@ public class AlertService {
                 oldMedicalrecord.setBirthdate(newMedicalRecord.getBirthdate());
                 oldMedicalrecord.setMedications(newMedicalRecord.getMedications());
                 oldMedicalrecord.setAllergies(newMedicalRecord.getAllergies());
+                JsonFile.writeJsonFile("fichierTest.json", alertPersistance);
                 return oldMedicalrecord;
             }
         }
@@ -199,6 +211,7 @@ public class AlertService {
         for (Medicalrecord medicalrecord : medicalrecordList) {
             if (medicalrecord.getFirstName().equalsIgnoreCase(firstName) && medicalrecord.getLastName().equalsIgnoreCase(lastName)) {
                 medicalrecordList.remove(medicalrecord);
+                JsonFile.writeJsonFile("fichierTest.json", alertPersistance);
                 return medicalrecord;
             }
         }

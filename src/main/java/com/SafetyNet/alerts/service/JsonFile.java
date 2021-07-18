@@ -4,31 +4,30 @@ import com.SafetyNet.alerts.repository.AlertPersistance;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 
 public class JsonFile {
 
-    AlertService alertService = new AlertService();
 
-    public void readJsonFile() {
+    public static AlertPersistance readJsonFile(String nomFichier) {
         ObjectMapper mapper = new ObjectMapper();
-        InputStream inputStream = TypeReference.class.getResourceAsStream("/fichierInitial.json");
+        InputStream inputStream = TypeReference.class.getResourceAsStream("/" + nomFichier );
+        AlertPersistance alertPersistance = null;
         try {
-            AlertPersistance alertPersistance = mapper.readValue(inputStream, AlertPersistance.class);
-            alertService.saveAlertPersistance(alertPersistance);
+            alertPersistance = mapper.readValue(inputStream, AlertPersistance.class);
             System.out.println("Alert persistance Saved!");
         } catch (IOException e) {
             System.out.println("Unable to save  Alert persistance person: " + e.getMessage());
         }
+        return alertPersistance;
     }
 
-    public static void writeJsonFile(String cheminDuFichierACreer, Object object){
+    public static void writeJsonFile(String nomFichier, Object object){
         ObjectMapper mapper = new ObjectMapper();
         try
         {
-            mapper.writeValue(new File(cheminDuFichierACreer), object);
+            OutputStream outputStream = new FileOutputStream("src/main/resources/" + nomFichier);
+            mapper.writeValue(outputStream, object);
         }
         catch (IOException e)
         {
