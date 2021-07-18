@@ -85,7 +85,6 @@ class AlertServiceTest {
 
     @Test
     void saveAlertPersistance() {
-        jsonFile.writeJsonFile("C:\\Users\\Thibault\\TestParkings\\alerts\\src\\main\\resources/fichierTest.json", alertServiceTest.listPerson());
         assertTrue(alertServiceTest.listPerson() != null && alertServiceTest.listPerson().size() == objectNumberGeneration);
 
     }

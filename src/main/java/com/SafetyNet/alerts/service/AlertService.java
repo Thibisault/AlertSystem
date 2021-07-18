@@ -19,7 +19,7 @@ import java.util.List;
 @Data
 public class AlertService {
 
-    AlertPersistance alertPersistance = new AlertPersistance();
+    AlertPersistance alertPersistance;
 
     FamilyMemberPersistance familyMemberPersistance = new FamilyMemberPersistance();
 

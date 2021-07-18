@@ -2,9 +2,7 @@ package com.SafetyNet.alerts.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.apache.catalina.LifecycleState;
 
-import java.util.List;
 
 @Data
 @AllArgsConstructor
