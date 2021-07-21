@@ -1,15 +1,14 @@
 package com.SafetyNet.alerts.repository;
 
 import com.SafetyNet.alerts.model.FamillyAtAddress;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
-@AllArgsConstructor
+@Getter
+@Setter
 @Component
 public class FamilyMemberPersistance {
 

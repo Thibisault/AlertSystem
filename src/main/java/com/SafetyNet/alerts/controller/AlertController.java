@@ -29,7 +29,7 @@ public class AlertController {
     }
 
     @GetMapping("/persons/list")
-    public List<Person> listPerson(){
+    public List<Person> listPerson() {
         return alertService.listPerson();
     }
 
@@ -135,9 +135,8 @@ public class AlertController {
         return alertService.obtainAllPersonList();
     }
 
-    @PostMapping("/communityEmail?city=<city>")
+    @PostMapping("/communityEmail/{city}")
     public List<String> haveEmailFromAllPerson(@PathVariable String city){
-
         return alertService.haveEmailsFromAllPersons(city);
     }
 }

@@ -1,16 +1,15 @@
 package com.SafetyNet.alerts.repository;
 
 import com.SafetyNet.alerts.model.PersonByFirestationNumber;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
-@Data
-@AllArgsConstructor
+@Getter
+@Setter
 public class PersonByFirestaionNumberPersistance {
 
     private List<PersonByFirestationNumber> personByFirestationNumbers = new ArrayList<>();

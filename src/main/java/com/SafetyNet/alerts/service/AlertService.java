@@ -425,16 +425,15 @@ public class AlertService {
         return allPersonLists;
     }
     /**
-     * Revoie la liste des emails de tout les habitants de la ville.
+     * Revoie la liste des emails de tout les habitants d'une ville.
      * @param city L'identifient de la ville.
      * @return La liste d'adresse email de tout les habitants de la ville.
      */
     public List<String> haveEmailsFromAllPersons(String city) {
         List<Person> personList = alertPersistance.getPersons();
         List<String> emailAllPerson = new ArrayList<>();
-
         for (Person person : personList) {
-            if (person.getCity() == city) {
+            if (person.getCity().equalsIgnoreCase(city)) {
                 emailAllPerson.add(person.getEmail());
             }
         }

@@ -210,5 +210,4 @@ public class ObtainRandomPersistance {
         nouvelleAlerte.setMedicalrecords(medicalrecordList);
         return nouvelleAlerte;
     }
-
 }

@@ -3,15 +3,15 @@ package com.SafetyNet.alerts.repository;
 import com.SafetyNet.alerts.model.Firestation;
 import com.SafetyNet.alerts.model.Medicalrecord;
 import com.SafetyNet.alerts.model.Person;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Data
-@AllArgsConstructor
 @Component
+@Getter
+@Setter
+
 public class AlertPersistance {
 
     private List<Person> persons;

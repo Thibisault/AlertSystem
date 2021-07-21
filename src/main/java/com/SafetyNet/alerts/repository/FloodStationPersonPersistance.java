@@ -1,16 +1,15 @@
 package com.SafetyNet.alerts.repository;
 
 import com.SafetyNet.alerts.model.FloodStationPerson;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Data
-@AllArgsConstructor
+@Getter
+@Setter
 @Component
 public class FloodStationPersonPersistance {
 
