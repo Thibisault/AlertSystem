@@ -70,7 +70,7 @@ public class AlertController {
     }
 
 
-    @PostMapping("/firestation")
+    @PostMapping("/firestations")
     public Firestation addFirestationToList(@RequestBody Firestation firestation){
         alertService.addFirestation(firestation);
         return firestation;
@@ -105,28 +105,28 @@ public class AlertController {
 
     //TODO : URL
 
-    @PostMapping("/firestation/{stationNumber}")
-    public PersonByFirestaionNumberPersistance avoirListeDePersonParFirestation(@PathVariable String stationNumber) throws ParseException {
+    @PostMapping("/firestation")
+    public PersonByFirestaionNumberPersistance avoirListeDePersonParFirestation(@RequestParam String stationNumber) throws ParseException {
         return alertService.obtaintListPersonByFireStation(stationNumber);
     }
 
-    @PostMapping("/childAlert/{address}")
-    public FamilyMemberPersistance countChildren(@PathVariable String address) throws ParseException {
+    @PostMapping("/childAlert")
+    public FamilyMemberPersistance countChildren(@RequestParam String address) throws ParseException {
         return alertService.countChildByAddress(address);
     }
 
-    @PostMapping("/phoneAlert/{firestationNumber}")
-    public List<String> sendUrgencySms(@PathVariable String firestationNumber){
+    @PostMapping("/phoneAlert")
+    public List<String> sendUrgencySms(@RequestParam String firestationNumber){
         return alertService.getPersonInFirestationZone(firestationNumber);
     }
 
-    @PostMapping("/fire/{address}")
-    public HumanByFirestationNumberPersistence firesationDeserveThatAddress(@PathVariable String address) throws ParseException {
+    @PostMapping("/fire")
+    public HumanByFirestationNumberPersistence firesationDeserveThatAddress(@RequestParam String address) throws ParseException {
         return alertService.getFirestationForAdrdress(address);
     }
 
-    @PostMapping("/flood/stations/{firestationNumber}")
-    public FloodStationPersonPersistance personsByAddress(@PathVariable String firestationNumber) throws ParseException {
+    @PostMapping("/flood/stations")
+    public FloodStationPersonPersistance personsByAddress(@RequestParam String firestationNumber) throws ParseException {
         return alertService.obtainPersonByAddress(firestationNumber);
     }
 
@@ -135,8 +135,8 @@ public class AlertController {
         return alertService.obtainAllPersonList();
     }
 
-    @PostMapping("/communityEmail/{city}")
-    public List<String> haveEmailFromAllPerson(@PathVariable String city){
+    @PostMapping("/communityEmail")
+    public List<String> haveEmailFromAllPerson(@RequestParam String city){
         return alertService.haveEmailsFromAllPersons(city);
     }
 }
